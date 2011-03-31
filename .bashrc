@@ -8,6 +8,8 @@
 export HISTCONTROL=ignoreboth
 export HISTSIZE=4500
 export HISTFILESIZE=4500
+shopt -s histappend
+PROMPT_COMMAND='history -a'
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -22,6 +24,7 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 svn_loc(){
+    [[ `command -v svn` ]] || return
     local branch="" line=""
 
     while read -r line
@@ -36,8 +39,7 @@ svn_loc(){
     printf "${branch}"
 }
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[00m\]:\[\033[01;32m\]\w\[\033[00m\] $(svn_loc)$(__git_ps1 "(%s)")\n$ '
-# PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[00m\]:\[\033[01;32m\]\w\[\033[00m\] \$ '
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[00m\] \[\033[01;32m\]\w\[\033[00m\]$(svn_loc)$(__git_ps1 " (%s)") \$ '
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -68,6 +70,3 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-shopt -s histappend
-
-PROMPT_COMMAND='history -a'

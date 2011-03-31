@@ -21,4 +21,10 @@
   untracked = cyan
 
 [log]
-  default = --stat
+    default = --stat
+
+[alias]
+    ci = commit
+    a = add
+    st = status
+
