@@ -27,4 +27,4 @@
     ci = commit
     a = add
     st = status
-
+    br = branch
