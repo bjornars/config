@@ -39,7 +39,13 @@ svn_loc(){
     printf "${branch}"
 }
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[00m\] \[\033[01;32m\]\w\[\033[00m\]$(svn_loc)$(__git_ps1 " (%s)") \$ '
+bold=$(tput bold)
+red=${bold}$(tput setaf 1) 
+green=${bold}$(tput setaf 2) 
+blue=${bold}$(tput setaf 4)
+reset=$(tput sgr0)
+
+PS1='${debian_chroot:+($debian_chroot)}${blue}\u@\h ${green} \w${red}$(svn_loc)$(__git_ps1 " (%s)")${reset} \$ '
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
