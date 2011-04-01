@@ -11,6 +11,8 @@ export HISTFILESIZE=4500
 shopt -s histappend
 PROMPT_COMMAND='history -a'
 
+unset MAILCHECK
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -45,7 +47,7 @@ green=${bold}$(tput setaf 2)
 blue=${bold}$(tput setaf 4)
 reset=$(tput sgr0)
 
-PS1='${debian_chroot:+($debian_chroot)}\[${blue}\]\u@\h \[${green}\] \w\[${red}\]$(svn_loc)$(__git_ps1 " (%s)")\[${reset}\] \$ '
+PS1='${debian_chroot:+($debian_chroot)}\[${blue}\]\u@\h \[${green}\]\w\[${red}\]$(svn_loc)$(__git_ps1 " (%s)")\[${reset}\] \$ '
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
