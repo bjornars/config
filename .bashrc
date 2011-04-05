@@ -47,7 +47,13 @@ green=${bold}$(tput setaf 2)
 blue=${bold}$(tput setaf 4)
 reset=$(tput sgr0)
 
+null_func(){ true; }
+
+[[ $(command -v __git_ps1) ]] || alias __git_ps1=null_func
+
 PS1='${debian_chroot:+($debian_chroot)}\[${blue}\]\u@\h \[${green}\]\w\[${red}\]$(svn_loc)$(__git_ps1 " (%s)")\[${reset}\] \$ '
+
+# unalias __git_ps1
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
