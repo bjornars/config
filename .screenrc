@@ -1,4 +1,6 @@
-shell -bash
+shell bash
+shelltitle bash
+
 activity ""
 bell ""
 vbell off
