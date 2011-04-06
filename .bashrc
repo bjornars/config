@@ -72,6 +72,9 @@ alias unrarall='find \( \( -iname "*.rar" -not -iname "*part*.rar" \) -or -iname
 
 alias ack=ack-grep
 
+alias g=git
+complete -o default -o nospace -F _git g
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
