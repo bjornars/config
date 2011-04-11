@@ -41,6 +41,12 @@ echo Inserting symlinks into ${userdir}
 for file in $(find . -type f ! -path "./.git/*" -a ! -path $0); do
 
     base=${file:2}
+    dir=$userdir/$(dirname $base)
+
+    if [[ ! -d $dir ]]; then
+        echo Making dir for $dir
+        [[ -z $dryrun ]] && mkdir -p $dir
+    fi
 
     echo "Creating symlink: ${curdir}/${base} -> ${userdir}/${base}"
     [[ -z $dryrun ]] && 
