@@ -23,18 +23,15 @@ if has('gui_running')
     set guioptions+=c
     set guioptions-=T
 "    set guioptions-=m
-    colorscheme desert
     set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
     "set guifont=Monospace
 elseif (&term == 'screen.linux') || (&term =~ '^linux')
     set t_Co=8
-    colorscheme desert
 elseif (&term == 'rxvt-unicode') || (&term =~ '^xterm') || (&term =~ '^screen')
     set ttymouse=xterm
-    colorscheme desert 
-else
-    colorscheme desert
 endif
+
+colorscheme xoria256 
 
 " Options
 set nocompatible

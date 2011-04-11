@@ -13,3 +13,8 @@ startup_message off
 
 caption always "%{= kb}[ %{G}$USER@%H %{b}][ %=%{w}%?%-Lw%?%{b}(%{W}%n*%f %t%?(%u)%?%{b})%{w}%?%+Lw%?%?%= %{b}][%{B} %Y.%m.%d %{W}%0c %{b}]"
 sorendition +b kG
+
+# 256-color stuff
+term screen-256color
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
