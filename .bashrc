@@ -47,7 +47,7 @@ green=${bold}$(tput setaf 2)
 blue=${bold}$(tput setaf 4)
 reset=$(tput sgr0)
 
-command -v __git_ps1 || alias __git_ps1=true
+command -v __git_ps1 > /dev/null || alias __git_ps1=true > /dev/null
 PS1='${debian_chroot:+($debian_chroot)}\[${blue}\]\u@\h \[${green}\]\w\[${red}\]$(svn_loc)$(__git_ps1 " (%s)")\[${reset}\] \$ '
 
 # If this is an xterm set the title to user@host:dir
@@ -74,6 +74,8 @@ alias ack=ack-grep
 
 alias g=git
 complete -o default -o nospace -F _git g
+
+[[ -d "$HOME/bin" ]] && PATH="$HOME/bin:$PATH"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
