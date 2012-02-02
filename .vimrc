@@ -2,36 +2,14 @@
 " ~bjornar's vimrc
 "   -- adapted from postlogic
 
-
-"Functions 'n stuff
-if v:progname =~? "evim"
-  finish
-endif
-
-if v:version >= 700
-  try
-    setlocal numberwidth=3
-  catch
-  endtry
-endif
-
-if has('gui_running')
-    set columns=90
-    set lines=40
-    set clipboard+=unnamed
-    set guioptions+=a
-    set guioptions+=c
-    set guioptions-=T
-"    set guioptions-=m
-    set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
-    "set guifont=Monospace
-elseif (&term == 'screen.linux') || (&term =~ '^linux')
+set ttymouse=xterm
+try
+    set t_Co=256
+    colorscheme xoria256 
+catch
     set t_Co=8
-elseif (&term == 'rxvt-unicode') || (&term =~ '^xterm') || (&term =~ '^screen')
-    set ttymouse=xterm
-endif
-
-colorscheme xoria256 
+    colorscheme darkblue
+endtry
 
 " Options
 set nocompatible
@@ -61,34 +39,24 @@ set mouse=nv
 " Open tag in new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
+nmap zT vatzf
+
 " Folding
-"if has("folding")
-"    set foldenable
-"    set foldmethod=indent
-"    set foldlevel=1
-"    set foldminlines=5
-"endif
+" if has("folding")
+"     set foldenable
+"     set foldmethod=indent
+"     set foldlevel=1
+"     set foldminlines=50
+" endif
 
 set wildchar=<tab>
 set wildmenu
 set wildmode=longest:full,full
+set cursorline
+set completeopt=menu,menuone,longest,preview
 
-if v:version >= 700
-    set cursorline
-    set completeopt=menu,menuone,longest,preview
-    set numberwidth=1
-    
-    "popup coloring - use mine, not yours
-    hi Pmenu ctermbg=2 guibg=darkolivegreen
-    hi PmenuSel ctermbg=0 guibg=black
-endif
-
-" Plugins
-
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
+syntax on
+set hlsearch
 
 if has("autocmd")
   filetype plugin indent on
@@ -116,4 +84,11 @@ if $TERM=='screen'
     exe "set titleold=bash"
 endif
 
+highlight trailspace guibg=red ctermbg=red
+match trailspace /\s\+\%#\@<!$\| /
 set noswapfile
+set tabpagemax=75
+set path+=~/prod-src/saturn-web/**
+nmap <F1> :echo<CR>
+imap <F1> <C-o>:echo<CR>
+
