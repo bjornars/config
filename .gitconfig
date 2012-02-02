@@ -34,4 +34,6 @@
     unmerged = !MERGEBASE=$(git merge-base HEAD master) && git log $MERGEBASE..HEAD
     master = checkout master
 [core]
-	excludesfile = /home/bsnoksru/.gitignore
+	excludesfile = ~/.gitignore
+[help]
+	autocorrect = 1

@@ -47,7 +47,7 @@ green=${bold}$(tput setaf 2)
 blue=${bold}$(tput setaf 4)
 reset=$(tput sgr0)
 
-command -v __git_ps1 > /dev/null || alias __git_ps1=true
+command -v __git_ps1 > /dev/null || alias __git_ps1=true > /dev/null
 PS1='${debian_chroot:+[${green}]($debian_chroot)}\[${blue}\]\u@\h \[${green}\]\w\[${red}\]$(svn_loc)$(__git_ps1 " (%s)")\[${reset}\] \$ '
 
 # If this is an xterm set the title to user@host:dir
@@ -70,10 +70,10 @@ fi
 
 alias unrarall='find \( \( -iname "*.rar" -not -iname "*part*.rar" \) -or -iname "*.part01.rar" \) -exec unrar e {} \;'
 
-alias ack=ack-grep
-
 alias g=git
 complete -o default -o nospace -F _git g
+
+[[ -d "$HOME/bin" ]] && PATH="$HOME/bin:$PATH"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -82,3 +82,4 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+# sudo dpkg-divert  --add --rename --divert /usr/bin/ack /usr/bin/ack-grep
