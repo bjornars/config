@@ -5,7 +5,7 @@
 set ttymouse=xterm
 try
     set t_Co=256
-    colorscheme xoria256 
+    colorscheme xoria256
 catch
     set t_Co=8
     colorscheme darkblue
@@ -34,7 +34,7 @@ set autowrite		" Automatically save before commands like :next and :make
 set hidden          " Hide buffers when they are abandoned
 
 " Enable mouse usage (all modes) in terminals, but allow right-click to be paste in putty
-set mouse=nv		
+set mouse=nv
 
 " Open tag in new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
@@ -60,7 +60,7 @@ set hlsearch
 
 if has("autocmd")
   filetype plugin indent on
-  
+
   augroup vimrcEx
   au!
 
@@ -88,7 +88,7 @@ highlight trailspace guibg=red ctermbg=red
 match trailspace /\s\+\%#\@<!$\| /
 set noswapfile
 set tabpagemax=75
-set path+=~/prod-src/saturn-web/**
 nmap <F1> :echo<CR>
 imap <F1> <C-o>:echo<CR>
 
+call pathogen#infect()
