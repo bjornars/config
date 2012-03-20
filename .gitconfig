@@ -20,6 +20,8 @@
   changed = green
   untracked = cyan
 
+[push]
+    default = tracking
 [log]
     default = --stat
 
