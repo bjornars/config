@@ -47,16 +47,17 @@ if dry_run: chatter("doing dryrun")
 chatter("inserting symlinks into", user_dir)
 
 for path, paths, files in os.walk(".", topdown=True):
+
     for list in paths, files:
         for each in list[:]:
-            if each in ignores: 
+            if each in ignores:
                 chatter('ignoring', each)
                 list.remove(each)
 
     new_path = abspath(join(user_dir, path))
     path = abspath(path)
 
-    if not isdir(new_path): 
+    if not isdir(new_path):
         chatter('making dir', new_path)
         do(os.mkdir, new_path)
 
@@ -69,7 +70,7 @@ for path, paths, files in os.walk(".", topdown=True):
 
         if not force and (exists(dest) or islink(dest)):
             chatter('skipping existing', dest)
-        else:  
+        else:
             do(os.symlink, src, dest)
             print "+ %s -> %s" % (src, dest)
 
