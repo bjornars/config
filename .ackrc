@@ -2,5 +2,6 @@
 --sort-files
 --type-add=python=.ini,.def
 --type-add=css=.scss
+--type-add=js=.coffee
 --type-set=netlinx=.axs,.axi
 --type-set=text-more=.txt,.rst
