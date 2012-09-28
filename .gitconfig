@@ -26,13 +26,12 @@
     default = --stat
 
 [alias]
-    ci = commit
     co = checkout
-    a = add
     st = status -sb
     br = branch
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -n 20
-    lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lga = log --graph --pretty=format:'%Cred%h %Cgreen(%cd)%C(yellow)%-d%Creset %s %C(bold blue)<%aE>' --date=short --abbrev-commit
+    lgr = log --graph --pretty=format:'%Cred%h %Cgreen(%cd)%C(yellow)%-d%Creset %s %C(bold blue)<%aE>' --date=relative --abbrev-commit
+    lg = log --graph --pretty=format:'%Cred%h %C(yellow)%-d%Creset %s %C(bold blue)<%aE>' --abbrev-commit -n 20
     unmerged = !MERGEBASE=$(git merge-base HEAD master) && git log $MERGEBASE..HEAD
     master = checkout master
 [core]

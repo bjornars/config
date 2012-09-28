@@ -90,5 +90,12 @@ set noswapfile
 set tabpagemax=75
 nmap <F1> :echo<CR>
 imap <F1> <C-o>:echo<CR>
-
 call pathogen#infect()
+
+nmap <F8> :TagbarToggle<CR>
+
+set wildignore+=*.pyc
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-b>'],
+    \ 'AcceptSelection("t")': ['<cr>'],
+    \ }
